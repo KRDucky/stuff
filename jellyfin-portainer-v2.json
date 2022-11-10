@@ -1,0 +1,60 @@
+{
+    "version": "2",
+    "templates": [
+        {
+            "title": "Jellyfin",
+            "name": "jellyfin",
+            "image": "lscr.io/linuxserver/jellyfin:latest",
+            "categories": [
+                "Media Server"
+            ],
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "8096:8096/tcp",
+                "8920:8920/tcp",
+                "7359:7359/udp",
+                "1900:1900/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": ""
+                },
+                {
+                    "container": "/data/tvshows",
+                    "bind": ""
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "default": "1000",
+                    "description": "PUID",
+                    "label": "PUID"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000",
+                    "description": "PGID",
+                    "label": "PGID"
+                },
+                {
+                    "name": "TZ",
+                    "default": "America/Chicago",
+                    "description": "Timezone",
+                    "label": "TimeZone"
+                }
+            ],
+            "labels": [
+                {
+                    "label": "Name",
+                    "value": "container_name",
+                    "variable": "jellyfin"
+                }
+            ],
+            "network_mode": "bridge",
+            "type": 1
+        }
+    ]
+}

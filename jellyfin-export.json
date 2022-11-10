@@ -1,0 +1,87 @@
+{
+  "title": "jellyfin",
+  "containers": [
+    {
+      "title": "Jellyfin",
+      "name": "jellyfin",
+      "image": "lscr.io/linuxserver/jellyfin:latest",
+      "description": "",
+      "categories": [
+        "Media Server"
+      ],
+      "platform": "linux",
+      "note": "",
+      "restart_policy": "unless-stopped",
+      "ports": [
+        {
+          "label": "",
+          "hport": "8096",
+          "cport": "8096",
+          "proto": "tcp"
+        },
+        {
+          "label": "",
+          "hport": "8920",
+          "cport": "8920",
+          "proto": "tcp"
+        },
+        {
+          "label": "",
+          "hport": "7359",
+          "cport": "7359",
+          "proto": "udp"
+        },
+        {
+          "label": "",
+          "hport": "1900",
+          "cport": "1900",
+          "proto": "udp"
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "",
+          "variable": "!config"
+        },
+        {
+          "container": "/data/tvshows",
+          "bind": "",
+          "variable": "!media"
+        }
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "default": "1000",
+          "description": "PUID",
+          "label": "PUID"
+        },
+        {
+          "name": "PGID",
+          "default": "1000",
+          "description": "PGID",
+          "label": "PGID"
+        },
+        {
+          "name": "TZ",
+          "default": "America/Chicago",
+          "description": "Timezone",
+          "label": "TimeZone"
+        }
+      ],
+      "command": [],
+      "devices": [],
+      "labels": [
+        {
+          "label": "Name",
+          "value": "container_name",
+          "variable": "jellyfin"
+        }
+      ],
+      "sysctls": [],
+      "cap_add": [],
+      "network_mode": "bridge"
+    }
+  ]
+}
